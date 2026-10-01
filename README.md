@@ -1,1 +1,1 @@
-# MemoraX
+# SecureSuppyAI
