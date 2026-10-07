@@ -1,0 +1,6 @@
+Dependency Name,Version,Ecosystem,Direct,License,Suspicion Score,Vulnerabilities
+requests,2.25.0,PyPI,Yes,UNKNOWN,0.0,0
+urllib3,1.26.5,PyPI,Yes,UNKNOWN,0.0,0
+pillow,9.0.0,PyPI,Yes,UNKNOWN,0.0,0
+flatmap-stream,0.1.0,PyPI,Yes,UNKNOWN,85.0,0
+reqeusts,2.25.0,PyPI,Yes,UNKNOWN,0.0,0

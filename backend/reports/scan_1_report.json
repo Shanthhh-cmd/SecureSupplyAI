@@ -1,0 +1,150 @@
+{
+  "project_name": "SecureSupply AI Demo Gateway",
+  "risk_score": 100.0,
+  "risk_level": "Critical",
+  "total_dependencies": 5,
+  "vulnerable_dependencies": 3,
+  "suspicious_dependencies": 1,
+  "attack_indicators_count": 2,
+  "policy_status": "BLOCK",
+  "dependencies": [
+    {
+      "id": 1,
+      "name": "requests",
+      "version": "2.25.0",
+      "ecosystem": "PyPI",
+      "is_direct": true,
+      "license": "UNKNOWN",
+      "suspicion_score": 0.0,
+      "suspicious_reasons": []
+    },
+    {
+      "id": 2,
+      "name": "urllib3",
+      "version": "1.26.5",
+      "ecosystem": "PyPI",
+      "is_direct": true,
+      "license": "UNKNOWN",
+      "suspicion_score": 0.0,
+      "suspicious_reasons": []
+    },
+    {
+      "id": 3,
+      "name": "pillow",
+      "version": "9.0.0",
+      "ecosystem": "PyPI",
+      "is_direct": true,
+      "license": "UNKNOWN",
+      "suspicion_score": 0.0,
+      "suspicious_reasons": []
+    },
+    {
+      "id": 4,
+      "name": "flatmap-stream",
+      "version": "0.1.0",
+      "ecosystem": "PyPI",
+      "is_direct": true,
+      "license": "UNKNOWN",
+      "suspicion_score": 85.0,
+      "suspicious_reasons": [
+        "KNOWN_SUSPICIOUS_PACKAGE: Package flatmap-stream matches known malicious signature database"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "reqeusts",
+      "version": "2.25.0",
+      "ecosystem": "PyPI",
+      "is_direct": true,
+      "license": "UNKNOWN",
+      "suspicion_score": 0.0,
+      "suspicious_reasons": []
+    }
+  ],
+  "vulnerabilities": [
+    {
+      "cve_id": "CVE-2023-32681",
+      "osv_id": "PYSEC-2023-74",
+      "title": "Unintended leak of Proxy-Authorization header in requests",
+      "description": "Requests before 2.31.0 leaks Proxy-Authorization headers to destination servers when following redirects.",
+      "severity": "HIGH",
+      "cvss_score": 7.5,
+      "fixed_version": "2.31.0",
+      "reference_urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2023-32681"
+      ],
+      "dependency_name": "requests",
+      "current_version": "2.25.0"
+    },
+    {
+      "cve_id": "CVE-2023-45803",
+      "osv_id": "GHSA-v845-j352-pw35",
+      "title": "urllib3 request body leak on redirect",
+      "description": "urllib3 before 1.26.18 does not strip Cookie headers on cross-site HTTP redirects.",
+      "severity": "MEDIUM",
+      "cvss_score": 6.1,
+      "fixed_version": "1.26.18",
+      "reference_urls": [
+        "https://github.com/advisories/GHSA-v845-j352-pw35"
+      ],
+      "dependency_name": "urllib3",
+      "current_version": "1.26.5"
+    },
+    {
+      "cve_id": "CVE-2023-4863",
+      "osv_id": "GHSA-j7hp-h8jx-5ppr",
+      "title": "Heap-based buffer overflow in WebP in Pillow",
+      "description": "Critical buffer overflow in WebP image processing allowing remote code execution.",
+      "severity": "CRITICAL",
+      "cvss_score": 9.8,
+      "fixed_version": "10.0.1",
+      "reference_urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2023-4863"
+      ],
+      "dependency_name": "pillow",
+      "current_version": "9.0.0"
+    }
+  ],
+  "recommendations": [
+    {
+      "dependency_name": "requests",
+      "current_version": "2.25.0",
+      "recommended_action": "UPGRADE",
+      "recommended_version": "2.31.0",
+      "rationale": "Upgrade requests to version 2.31.0 to mitigate HIGH severity vulnerability (CVE-2023-32681: Unintended leak of Proxy-Authorization header in requests).",
+      "severity": "HIGH"
+    },
+    {
+      "dependency_name": "urllib3",
+      "current_version": "1.26.5",
+      "recommended_action": "UPGRADE",
+      "recommended_version": "1.26.18",
+      "rationale": "Upgrade urllib3 to version 1.26.18 to mitigate MEDIUM severity vulnerability (CVE-2023-45803: urllib3 request body leak on redirect).",
+      "severity": "MEDIUM"
+    },
+    {
+      "dependency_name": "pillow",
+      "current_version": "9.0.0",
+      "recommended_action": "UPGRADE",
+      "recommended_version": "10.0.1",
+      "rationale": "Upgrade pillow to version 10.0.1 to mitigate CRITICAL severity vulnerability (CVE-2023-4863: Heap-based buffer overflow in WebP in Pillow).",
+      "severity": "CRITICAL"
+    },
+    {
+      "dependency_name": null,
+      "current_version": "0.0.0",
+      "recommended_action": "REMOVE",
+      "recommended_version": null,
+      "rationale": "Immediately remove 'None' due to detected supply chain attack indicator: Package 'flatmap-stream' exhibits maintainer anomaly or hijacked release indicators.",
+      "severity": "CRITICAL"
+    },
+    {
+      "dependency_name": "flatmap-stream",
+      "current_version": "0.1.0",
+      "recommended_action": "REMOVE",
+      "recommended_version": null,
+      "rationale": "Quarantine or remove 'flatmap-stream'. High suspicion score (85.0/100) due to triggers: KNOWN_SUSPICIOUS_PACKAGE: Package flatmap-stream matches known malicious signature database.",
+      "severity": "HIGH"
+    }
+  ]
+}
